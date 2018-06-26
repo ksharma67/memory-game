@@ -1,0 +1,165 @@
+@-webkit-keyframes ksh-flyin {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+    transform: translateY(-40px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0); } }
+
+@keyframes ksh-flyin {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+    transform: translateY(-40px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0); } }
+
+@-webkit-keyframes ksh-flyout {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+    transform: translateY(-40px); } }
+
+@keyframes ksh-flyout {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+    transform: translateY(-40px); } }
+
+@-webkit-keyframes ksh-pulse {
+  0% {
+    box-shadow: inset 0 0 0 300px transparent; }
+  70% {
+    box-shadow: inset 0 0 0 300px rgba(255, 255, 255, 0.25); }
+  100% {
+    box-shadow: inset 0 0 0 300px transparent; } }
+
+@keyframes ksh-pulse {
+  0% {
+    box-shadow: inset 0 0 0 300px transparent; }
+  70% {
+    box-shadow: inset 0 0 0 300px rgba(255, 255, 255, 0.25); }
+  100% {
+    box-shadow: inset 0 0 0 300px transparent; } }
+
+.ksh.ksh-theme-os {
+  padding-top: 160px;
+  padding-bottom: 160px; }
+  .ksh.ksh-theme-os.ksh-closing .ksh-content {
+    -webkit-animation: ksh-flyout .5s forwards;
+    animation: ksh-flyout .5s forwards; }
+  .ksh.ksh-theme-os .ksh-content {
+    -webkit-animation: ksh-flyin .5s;
+    animation: ksh-flyin .5s; }
+  .ksh.ksh-theme-os .ksh-content {
+    border-radius: 5px;
+    box-shadow: inset 0 1px #a6a6a6, 0 0 0 1px rgba(0, 0, 0, 0.08);
+    font-family: "Helvetica Neue", sans-serif;
+    border-top: 20px solid #bbb;
+    background: #f0f0f0;
+    color: #444;
+    padding: 1em;
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 450px;
+    font-size: 1.1em;
+    line-height: 1.5em; }
+    .ksh.ksh-theme-os .ksh-content h1, .ksh.ksh-theme-os .ksh-content h2, .ksh.ksh-theme-os .ksh-content h3, .ksh.ksh-theme-os .ksh-content h4, .ksh.ksh-theme-os .ksh-content h5, .ksh.ksh-theme-os .ksh-content h6, .ksh.ksh-theme-os .ksh-content p, .ksh.ksh-theme-os .ksh-content ul, .ksh.ksh-theme-os .ksh-content li {
+      color: inherit; }
+  .ksh.ksh-theme-os .ksh-close {
+    border-radius: 0 5px 0 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer; }
+    .ksh.ksh-theme-os .ksh-close:before {
+      border-radius: 3px;
+      position: absolute;
+      content: "\00D7";
+      font-size: 26px;
+      font-weight: normal;
+      line-height: 31px;
+      height: 30px;
+      width: 30px;
+      text-align: center;
+      top: 3px;
+      right: 3px;
+      color: #bbb;
+      background: transparent; }
+    .ksh.ksh-theme-os .ksh-close:hover:before, .ksh.ksh-theme-os .ksh-close:active:before {
+      color: #777;
+      background: #e0e0e0; }
+  .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-message {
+    margin-bottom: .5em; }
+  .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input {
+    margin-bottom: 1em; }
+    .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input select, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input textarea, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="date"], .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="datetime"], .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="datetime-local"], .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="email"], .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="month"], .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="number"], .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="password"], .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="search"], .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="tel"], .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="text"], .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="time"], .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="url"], .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="week"] {
+      border-radius: 3px;
+      background: #fff;
+      width: 100%;
+      padding: .25em .67em;
+      border: 0;
+      font-family: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+      min-height: 2.5em;
+      margin: 0 0 .25em; }
+      .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input select:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input textarea:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="date"]:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="datetime"]:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="datetime-local"]:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="email"]:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="month"]:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="number"]:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="password"]:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="search"]:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="tel"]:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="text"]:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="time"]:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="url"]:focus, .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-input input[type="week"]:focus {
+        box-shadow: inset 0 0 0 1px #3288e6;
+        outline: none; }
+  .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-buttons {
+    *zoom: 1; }
+    .ksh.ksh-theme-os .ksh-dialog-form .ksh-dialog-buttons:after {
+      content: "";
+      display: table;
+      clear: both; }
+  .ksh.ksh-theme-os .ksh-dialog-button {
+    border-radius: 3px;
+    border: 0;
+    float: right;
+    margin: 0 0 0 .5em;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: .8em;
+    line-height: 1em;
+    padding: .75em 2em; }
+    .ksh.ksh-theme-os .ksh-dialog-button.ksh-last {
+      margin-left: 0; }
+    .ksh.ksh-theme-os .ksh-dialog-button:focus {
+      -webkit-animation: ksh-pulse 1.1s infinite;
+      animation: ksh-pulse 1.1s infinite;
+      outline: none; }
+      @media (max-width: 568px) {
+        .ksh.ksh-theme-os .ksh-dialog-button:focus {
+          -webkit-animation: none;
+          animation: none; } }
+    .ksh.ksh-theme-os .ksh-dialog-button.ksh-dialog-button-primary {
+      background: #3288e6;
+      color: #fff; }
+    .ksh.ksh-theme-os .ksh-dialog-button.ksh-dialog-button-secondary {
+      background: #e0e0e0;
+      color: #777; }
+
+.ksh-loading-spinner.ksh-theme-os {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 0 0.5em rgba(0, 0, 0, 0.2);
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  width: 0;
+  height: 0;
+  border: 1.2em solid #bbb;
+  border-top-color: #f0f0f0;
+  border-bottom-color: #f0f0f0; }
