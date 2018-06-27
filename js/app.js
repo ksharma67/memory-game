@@ -2,13 +2,58 @@
  * App's JavaScript code
  */
 
-const cardList = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
+const card_list = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
+// Already Present
 let started = false;
-let openCards = [];
+let open_cards = [];
 let moves = 0;
-let timeCount = 0;
-let solvedCount = 0;
-let timerPtr;
+let time_count = 0;
+let solved_count = 0;
+let timer_ptr;
+
+// initialize stars display
+function init_stars(){
+    for (let i=0; i<3; i++){
+        $(".stars").append(`<li><i class="fa fa-star"></i></li>`);
+    }
+}
+
+// reduce star rate
+function reduce_star(){
+    let stars = $(".fa-star");
+    $(stars[stars.length-1]).toggleClass("fa-star fa-star-o");
+}
+
+// init game
+function init_game(){
+    populate_cards();
+    init_stars();
+    $(".card").click(cardClick);
+}
+
+// things done after DOM is loaded for the first time
+$(document).ready(function(){
+    init_game();
+    $("#restart").click(reset_game);
+    ksh.defaultOptions.className = 'ksh-theme-os';
+    ksh.dialog.buttons.YES.text = 'Yes!';
+    ksh.dialog.buttons.NO.text = 'No';
+});
+
+// load animateCss
+// taken from https://github.com/daneden/animate.css/#usage
+$.fn.extend({
+    animateCss: function (animationName, callback) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        this.addClass('animated ' + animationName).one(animationEnd, function () {
+            $(this).removeClass('animated ' + animationName);
+            if (callback) {
+                callback();
+            }
+        });
+        return this;
+    }
+});
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -30,45 +75,45 @@ function getClassFromCard(card){
 }
 
 // check open cards when count = 2
-function checkOpenCards(){
-    if (getClassFromCard(openCards[0]) === getClassFromCard(openCards[1])){
-        solvedCount++;
-        openCards.forEach(function(card){
+function checkopen_cards(){
+    if (getClassFromCard(open_cards[0]) === getClassFromCard(open_cards[1])){
+        solved_count++;
+        open_cards.forEach(function(card){
             card.animateCss('tada', function(){
                 card.toggleClass("open show match");
             });
         });
     } else {
-        openCards.forEach(function(card){
+        open_cards.forEach(function(card){
             card.animateCss('shake', function(){
                 card.toggleClass("open show");
             });
         });
     }
-    openCards = [];
-    incrementMove();
-    if (solvedCount === 8){
-        endGame();
+    open_cards = [];
+    increment_move();
+    if (solved_count === 8){
+        end_game();
     }
 }
 
 // starts the timer
-function startTimer(){
-    timeCount += 1;
-    $("#timer").html(timeCount);
-    timerPtr = setTimeout(startTimer, 1000);
+function start_timer(){
+    time_count += 1;
+    $("#timer").html(time_count);
+    timer_ptr = setTimeout(start_timer, 1000);
 }
 
 // increment move count
-function incrementMove(){
+function increment_move(){
     moves += 1;
     $("#moves").html(moves);
     if (moves === 14 || moves === 20){
-        reduceStar();
+        reduce_star();
     }
 }
 
-// event handler for when the card is clicked
+// event handler for when the card is being clicked!
 function cardClick(event){
     // check opened or matched card
     let classes = $(this).attr("class");
@@ -79,102 +124,58 @@ function cardClick(event){
     // start game if needed
     if (!started) {
         started = true;
-        timeCount = 0;
-        timerPtr = setTimeout(startTimer, 1000);
+        time_count = 0;
+        timer_ptr = setTimeout(start_timer, 1000);
     }
     // cards can be flipped
-    if (openCards.length < 2){
+    if (open_cards.length < 2){
         $(this).toggleClass("open show");
-        openCards.push($(this));
+        open_cards.push($(this));
     }
     // check if cards match
-    if (openCards.length === 2){
-        checkOpenCards();
+    if (open_cards.length === 2){
+        checkopen_cards();
     }
 }
 
 // create individual card element
-function createCard(cardClass){
+function create_card(cardClass){
     $("ul.deck").append(`<li class="card"><i class="fa ${cardClass}"></i></li>`);
 }
 
 // populate cards in DOM
-function populateCards(){
-    shuffle(cardList.concat(cardList)).forEach(createCard);
+function populate_cards(){
+    shuffle(card_list.concat(card_list)).forEach(create_card);
 }
 
 // reset game
-function resetGame(){
+function reset_game(){
     $("ul.deck").html("");
     $(".stars").html("");
     moves = -1;
-    incrementMove();
+    increment_move();
     started = false;
-    openCards = [];
-    timeCount = 0;
-    solvedCount = 0;
-    clearTimeout(timerPtr);
+    open_cards = [];
+    time_count = 0;
+    solved_count = 0;
+    clearTimeout(timer_ptr);
     $("#timer").html(0);
     // re-setup game
-    initGame();
+    init_game();
 }
 
 // runs when game has been won
-function endGame(){
+function end_game(){
     // stop timer
-    clearTimeout(timerPtr);
+    clearTimeout(timer_ptr);
     // show prompt
     let stars = $(".fa-star").length;
     ksh.dialog.confirm({
-        message: `Congrats! You just won in ${timeCount} seconds with ${stars}/3 star rating. Do you want to play again?`,
+        message: `Congrats! You just won the game in ${time_count} seconds with ${stars} star rating. Do you want to play ?`,
         callback: function(value){
             if (value){
-                resetGame();
+                reset_game();
             }
         }
     });
 }
-
-// initialize stars display
-function initStars(){
-    for (let i=0; i<3; i++){
-        $(".stars").append(`<li><i class="fa fa-star"></i></li>`);
-    }
-}
-
-// reduce star rating
-function reduceStar(){
-    let stars = $(".fa-star");
-    $(stars[stars.length-1]).toggleClass("fa-star fa-star-o");
-}
-
-// init game
-function initGame(){
-    populateCards();
-    initStars();
-    $(".card").click(cardClick);
-}
-
-// things done after DOM is loaded for the first time
-$(document).ready(function(){
-    initGame();
-    $("#restart").click(resetGame);
-    ksh.defaultOptions.className = 'ksh-theme-os';
-    ksh.dialog.buttons.YES.text = 'Yes!';
-    ksh.dialog.buttons.NO.text = 'No';
-});
-
-// load animateCss
-// taken from https://github.com/daneden/animate.css/#usage
-$.fn.extend({
-    animateCss: function (animationName, callback) {
-        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-        this.addClass('animated ' + animationName).one(animationEnd, function () {
-            $(this).removeClass('animated ' + animationName);
-            if (callback) {
-                callback();
-            }
-        });
-        return this;
-    }
-});
