@@ -3,7 +3,7 @@ Udacity-->memory-game
 
 <h1>This is a complete browser-based card matching game.</h1>
 
-In Each turn:<br>
+<h3>In Each turn:</h3>
 The player flips one card over to reveal its underlying symbol.
 The player then turns over a second card, trying to find the corresponding card with the same symbol.<br>
 If the cards match, both cards stay flipped over.<br>
