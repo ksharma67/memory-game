@@ -10,5 +10,5 @@ If the cards match, both cards stay flipped over.<br>
 If the cards do not match, both cards are flipped face down.<br>
 The game ends once all cards have been correctly matched.<br>
 <h2>How to Run:</h2>
-Clone the Repository.<br>
+Clone the Repository by using git clone wwww.github.com/ksharma67/memory-game in terminal. <br>
 Open index.html file to view the project in your browser.
