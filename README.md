@@ -17,7 +17,7 @@ The game ends once all cards have been correctly matched.<br>
 </ul>
 <h2>How to Run:</h2>
 <h3>Option 1</h3>
-<a href=ksharma67.github.io/memory-game>Online --> Link</a>
+<a href="http://ksharma67.github.io/memory-game">Online --> Link</a>
 <h3>Option 2</h3>
 Clone the Repository by using <code>git clone wwww.github.com/ksharma67/memory-game</code> in terminal. <br>
 Open index.html file to view the project in your browser.
